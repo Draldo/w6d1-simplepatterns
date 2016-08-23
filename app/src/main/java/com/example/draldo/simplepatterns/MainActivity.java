@@ -7,7 +7,11 @@ import com.example.draldo.simplepatterns.Factory.Animal;
 import com.example.draldo.simplepatterns.Factory.AnimalFactory;
 import com.example.draldo.simplepatterns.Factory.Fish;
 import com.example.draldo.simplepatterns.Factory.Mammal;
+import com.example.draldo.simplepatterns.RxJava.ObserverHelper;
 import com.example.draldo.simplepatterns.Singleton.Tiger;
+
+import rx.Observable;
+import rx.Observer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,5 +39,10 @@ public class MainActivity extends AppCompatActivity {
         dumbo.run();
         Mammal simba = animalFactory.createMammal();
         simba.run();
+
+        Observer<String> observer = ObserverHelper.createObserver();
+        Observable<String> observable = ObserverHelper.createObservable();
+
+        observable.subscribe(observer);
     }
 }
